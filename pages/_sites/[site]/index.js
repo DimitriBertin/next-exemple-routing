@@ -32,8 +32,6 @@ export default function Index({ project, domains }) {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch('http://localhost:3000/api/data')
-  const { paths } = await res.json()
   return {
     paths: [
       { params: { site: "quintyss1" } },
