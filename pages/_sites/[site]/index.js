@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 export default function Index({ project, domains }) {
-  console.log('DOMAINS', domains)
   return (
     <div>
       <h1>Home - </h1>
@@ -36,15 +35,76 @@ export async function getStaticPaths() {
   const res = await fetch('http://localhost:3000/api/data')
   const { paths } = await res.json()
   return {
-    paths: paths,
+    paths: [
+      { params: { site: "quintyss1" } },
+      { params: { site: "quintyss2" } },
+      { params: { site: "quintyss3" } },
+    ],
     fallback: "blocking",
   };
 }
 
 export const getStaticProps = async (context) => {
   // API HERE TO GET ALL DOMAIN ---
-  const res = await fetch('http://localhost:3000/api/data')
-  const { data, paths } = await res.json()
+  const data = [
+    {
+      domain: "quintyss1",
+      data: {
+        id: 30998,
+        template: 'template1',
+        langs: [
+          {
+            default: true,
+            iso: 'fr',
+            name: 'français',
+          },
+          {
+            default: false,
+            iso: 'en',
+            name: 'english',
+          },
+        ],
+      }
+    },
+    {
+      domain: "quintyss2",
+      data: {
+        id: 90897,
+        template: 'template2',
+        langs: [
+          {
+            default: true,
+            iso: 'fr',
+            name: 'français',
+          },
+          {
+            default: false,
+            iso: 'es',
+            name: 'spanish',
+          },
+        ],
+      }
+    },
+    {
+      domain: "quintyss3",
+      data: {
+        id: 28768289,
+        template: 'template22',
+        langs: [
+          {
+            default: true,
+            iso: 'en',
+            name: 'english',
+          },
+          {
+            default: false,
+            iso: 'fr',
+            name: 'français',
+          },
+        ],
+      }
+    }
+  ]
 
   const project = data.find((p) => p.domain === context.params.site);
 
@@ -57,7 +117,11 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       project,
-      domains: paths
+      domains: [
+        { params: { site: "quintyss1" } },
+        { params: { site: "quintyss2" } },
+        { params: { site: "quintyss3" } },
+      ]
     },
   };
 };

@@ -2,9 +2,7 @@
 
 export default function handler(req, res) {
   const paths = [
-    { params: { site: "quintyss1" } },
-    { params: { site: "quintyss2" } },
-    { params: { site: "quintyss3" } },
+    
   ]
 
   const quyntiss1 = {
@@ -48,23 +46,7 @@ export default function handler(req, res) {
   }
 
   const quyntiss3 = {
-    domain: "quintyss3",
-    data: {
-      id: 28768289,
-      template: 'template22',
-      langs: [
-        {
-          default: true,
-          iso: 'en',
-          name: 'english',
-        },
-        {
-          default: false,
-          iso: 'fr',
-          name: 'français',
-        },
-      ],
-    }
+    
   }
 
   // RETURN JSON
