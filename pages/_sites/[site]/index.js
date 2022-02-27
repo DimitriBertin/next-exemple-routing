@@ -22,7 +22,7 @@ export default function Index({ project, domains }) {
         <ul>
           {domains && domains.map((domain) => (
             <li key={domain.params.site}>
-              <Link href={`http://${domain.params.site}.localhost:3000`}>{domain.params.site}</Link>
+              <Link href={`${process.env.PROTOCOL}://${domain.params.site}.${process.env.HOST}`}>{domain.params.site}</Link>
             </li>
           ))}
         </ul>
