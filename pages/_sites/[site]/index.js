@@ -13,7 +13,7 @@ export default function Index({ project, domains }) {
           <label htmlFor="select-lang">Lang:</label>
           <select id="select-lang">
             {project.data.langs && project.data.langs.map((lang) => (
-              <option value={lang.iso} selected={lang.default}>{lang.name}</option>
+              <option value={lang.iso} selected={lang.default} key={`${project.domain}-${lang.name}`}>{lang.name}</option>
             ))}
           </select>
         </li>
